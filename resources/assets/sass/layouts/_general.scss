@@ -1,0 +1,12 @@
+.l-grid-container {
+    max-width: 980px;
+    margin: auto;
+}
+
+.l-content-section {
+    margin-bottom: 3.75rem;
+
+    @media (max-width: $break-small) {
+        margin-bottom: 2rem;
+    }
+}

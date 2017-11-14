@@ -1,0 +1,26 @@
+.homepage-banner {
+  margin: 0 0 40px;
+  padding: 10em 0 6em;
+  background-position: center;
+  background-size: cover;
+
+  .banner-content {
+    text-align: center;
+    max-width: 720px;
+    .banner-title {
+      font-size: 70px;
+      line-height: 70px;
+      font-weight: 900;
+      color: white;
+    }
+
+    p {
+      font-size: 18px;
+      color: white;
+    }
+
+    .banner-button {
+      @include button($primary: #333, $primaryHover: #333, $secondary : #fff, $border:#fff, $secondaryHover: #eee, $borderHover: #fff);
+    }
+  }
+}

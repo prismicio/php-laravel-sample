@@ -1,0 +1,30 @@
+.banner {
+  position: relative;
+  img{
+    width: 100%;
+  }
+  .cta{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(0deg,rgba(0,0,0,.5) 0,rgba(0,0,0,.30) 40%,transparent);
+    padding: 30px 20px;
+    .cta-text {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+    color: white;
+    padding-top: 15px;
+  }
+  .cta-button {
+    color: white;
+    text-decoration: underline;
+    display: block;
+    padding: 5px 0 10px 0;
+    font-size: 13px;
+    line-height: 20px;
+    font-weight: 700;
+  }
+  }
+}
