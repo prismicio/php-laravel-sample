@@ -1,13 +1,17 @@
+<?php
+use Prismic\Dom\RichText;
+?>
+
 <div class="featured-section l-grid-container">
     <div class="content">
         <div class="title">
-            {!! $slice->getPrimary()->getStructuredText('title')->asHtml($linkResolver) !!}
+            {!! RichText::asHtml($slice->primary->title, $linkResolver) !!}
         </div>
         <div class="text">
-            {!! $slice->getPrimary()->getStructuredText('text')->asHtml($linkResolver) !!}
+            {!! RichText::asHtml($slice->primary->text, $linkResolver) !!}
         </div>
     </div>
     <div class="illustration">
-        <img src="{!! $slice->getPrimary()->getImage('image')->getUrl() !!}" alt="{!! $slice->getPrimary()->getImage('image')->getAlt() !!}">
+        <img src="{!! $slice->primary->image->url !!}" alt="{!! $slice->primary->image->alt !!}">
     </div>
 </div>

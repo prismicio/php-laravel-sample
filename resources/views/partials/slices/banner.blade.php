@@ -1,16 +1,21 @@
+<?php
+use Prismic\Dom\RichText;
+use Prismic\Dom\Link;
+?>
+
 <section class="banner l-content-section">
-    <img src="{!! $slice->getPrimary()->getImage('image')->getUrl() !!}" alt="{!! $slice->getPrimary()->getImage('image')->getAlt() !!}">
+    <img src="{!! $slice->primary->image->url !!}" alt="{!! $slice->primary->image->alt !!}">
     <div class="cta">
         <div class="cta-text l-grid-container">
-            {!! $slice->getPrimary()->getText('title') !!}
+            {!! RichText::asText($slice->primary->title) !!}
         </div>
         <?php
-        $link = $slice->getPrimary()->getLink('link');
-        $linkText = $slice->getPrimary()->getText('linkText');
+        $linkUrl = Link::asUrl($slice->primary->link);
+        $linkText = RichText::asText($slice->primary->linkText);
         ?>
-        @if($link && $linkText)
+        @if ($linkUrl && $linkText)
             <div>
-                <a class="cta-button l-grid-container" href="{!! $link->getUrl($linkResolver) !!}">
+                <a class="cta-button l-grid-container" href="{!! $linkUrl !!}">
                     {!! $linkText !!}
                 </a>
             </div>

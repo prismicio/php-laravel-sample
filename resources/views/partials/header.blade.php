@@ -1,35 +1,45 @@
+<?php
+use Prismic\Dom\RichText;
+use Prismic\Dom\Link;
+
+function getAlternateLangage($languages, $langKey) {
+   foreach ($languages as $language) {
+       if ($language->lang === $langKey) {
+           return $language;
+       }
+   }
+   return null;
+}
+?>
+
 <header class="site-header l-grid-container dark">
     <a href="/{!! $currentLang !!}">
-        <div class="logo">{!! $menu->getText('menu.title') !!}</div>
+        <div class="logo">{!! RichText::asText($menu->data->title) !!}</div>
     </a>
     <nav>
         <ul>
-            @foreach($menu->getGroup('menu.menuLinks')->getArray() as $item)
-                <?php
-                $link = $item->getLink('link');
-                $label = $item->getText('label');
-                ?>
-                @if($link && $label)
+            @foreach ($menu->data->menuLinks as $item)
+                @if ($item->link && $item->label)
                     <li>
-                        <a href="{!! $link->getUrl($linkResolver) !!}">{!! $label !!}</a>
+                        <a href="{!! Link::asUrl($item->link, $linkResolver) !!}">{!! $item->label !!}</a>
                     </li>
                 @endif
             @endforeach
             <li>
                 <div class="language-select-wrapper">
                     <select class="language-select" id="language-select">
-                        @foreach(config('i18n.languages') as $language)
+                        @foreach (config('i18n.languages') as $language)
                             <?php
-                            $lang = $language['key'];
-                            $isCurrentLang = $lang === $currentLang;
+                            $langKey = $language['key'];
+                            $isCurrentLang = $langKey === $currentLang;
                             if ($isCurrentLang) {
                                 $link = $linkResolver($document);
                             } else {
-                                $link = $linkResolver($document->getAlternateLanguage($lang));
+                                $link = $linkResolver(getAlternateLangage($document->alternate_languages, $langKey));
                             }
                             ?>
                             <option
-                                value="{!! $lang !!}"
+                                value="{!! $langKey !!}"
                                 href="{!! $link !!}"
                                 {!! $isCurrentLang ? 'selected' : false !!}
                             >

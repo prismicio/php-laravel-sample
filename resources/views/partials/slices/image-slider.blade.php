@@ -1,12 +1,9 @@
 <section class="slider l-content-section l-grid-container">
     <ul class="js-image-slider">
-        @foreach($slice->getItems()->getArray() as $item)
-            <?php $image = $item->getImage('image') ?>
-            @if($image)
-                <li>
-                    <img src="{!! $image->getUrl() !!}" alt="{!! $image->getAlt() !!}">
-                </li>
-            @endif
+        @foreach ($slice->items as $item)
+            <li>
+                <img src="{!! $item->image->url !!}" alt="{!! $item->image->alt !!}">
+            </li>
         @endforeach
     </ul>
 </section>

@@ -15,17 +15,6 @@ use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
-| Handle i18n
-|--------------------------------------------------------------------------
-*/
-
-function i18nConfig(Request $request, $lang) {
-    $request->merge(['currentLang' => $lang]);
-    return ['lang' => $lang];
-}
-
-/*
-|--------------------------------------------------------------------------
 | Preview route
 |--------------------------------------------------------------------------
 |
@@ -52,8 +41,11 @@ Route::get('/', function (Request $request) {
 });
 
 Route::get('/{lang}', function ($lang, Request $request) {
+    // Set the current language
+    $request->merge(['currentLang' => $lang]);
+
     // Query the document by single type
-    $document = $request->input('api')->getSingle('homepage', i18nConfig($request, $lang));
+    $document = $request->input('api')->getSingle('homepage', ['lang' => $lang]);
 
     // Render the page
     return view('homepage', ['document' => $document]);
@@ -66,8 +58,11 @@ Route::get('/{lang}', function ($lang, Request $request) {
 */
 
 Route::get('/{lang}/page/{uid}', function ($lang, $uid, Request $request) {
+    // Set the current language
+    $request->merge(['currentLang' => $lang]);
+
     // Query the document by UID
-    $document = $request->input('api')->getByUID('page', $uid, i18nConfig($request, $lang));
+    $document = $request->input('api')->getByUID('page', $uid, ['lang' => $lang]);
 
     // Render the page
     return view('page', ['document' => $document]);

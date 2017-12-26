@@ -1,5 +1,7 @@
 <?php
-$sliceLabel = $slice->getLabel();
+use Prismic\Dom\RichText;
+
+$sliceLabel = $slice->slice_label;
 if ($sliceLabel) {
     $sectionClass = 'text-section-' . $sliceLabel;
 } else {
@@ -8,5 +10,5 @@ if ($sliceLabel) {
 ?>
 
 <section class="text-section l-grid-container {!! $sectionClass !!}">
-    {!! $slice->getPrimary()->getStructuredText('text')->asHtml($linkResolver) !!}
+    {!! RichText::asHtml($slice->primary->text, $linkResolver) !!}
 </section>

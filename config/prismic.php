@@ -12,7 +12,7 @@ return [
     |
     */
 
-    'url' => 'https://joseboveyparleanglais-clone.prismic.io/api',
+    'url' => 'https://joseboveyparleanglais-clone.prismic.io/api/v2',
 
     /*
     |--------------------------------------------------------------------------

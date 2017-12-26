@@ -2,33 +2,32 @@
 
 @section('content')
 
-    <div data-wio-id="{!! $document->getId() !!}">
+    <div data-wio-id="{!! $document->id !!}">
 
-        <?php $slices = $document->getSliceZone('page.body')->getSlices(); ?>
-        @foreach ($slices as $slice)
-            @switch($slice->getSliceType())
-                @case('highlight_section')
+        @foreach ($document->data->body as $slice)
+            @switch ($slice->slice_type)
+                @case ('highlight_section')
                     @include('partials.slices.highlight-section', ['slice' => $slice])
                     @break
-                @case('banner')
+                @case ('banner')
                     @include('partials.slices.banner', ['slice' => $slice])
                     @break
-                @case('banner_look')
+                @case ('banner_look')
                     @include('partials.slices.quote-banner', ['slice' => $slice])
                     @break
-                @case('editorial_look')
+                @case ('editorial_look')
                     @include('partials.slices.featured-section', ['slice' => $slice])
                     @break
-                @case('text_section')
+                @case ('text_section')
                     @include('partials.slices.text-section', ['slice' => $slice])
                     @break
-                @case('image_slider')
+                @case ('image_slider')
                     @include('partials.slices.image-slider', ['slice' => $slice])
                     @break
-                @case('gallery')
+                @case ('gallery')
                     @include('partials.slices.gallery', ['slice' => $slice])
                     @break
-                 @case('video')
+                 @case ('video')
                     @include('partials.slices.video', ['slice' => $slice])
                     @break
             @endswitch

@@ -1,21 +1,26 @@
+<?php
+use Prismic\Dom\RichText;
+use Prismic\Dom\Link;
+?>
+
 <section class="highlight-section l-grid-container">
     <div class="illustration">
-        <img src="{!! $slice->getPrimary()->getImage('image')->getUrl() !!}" alt="{!! $slice->getPrimary()->getImage('image')->getAlt() !!}">
+        <img src="{!! $slice->primary->image->url !!}" alt="{!! $slice->primary->image->alt !!}">
     </div>
     <div class="content">
         <div class="title">
-            {!! $slice->getPrimary()->getStructuredText('title')->asHtml($linkResolver) !!}
+            {!! RichText::asHtml($slice->primary->title, $linkResolver) !!}
         </div>
         <div class="desc">
-            {!! $slice->getPrimary()->getStructuredText('description')->asHtml($linkResolver) !!}
+            {!! RichText::asHtml($slice->primary->description, $linkResolver) !!}
         </div>
         <?php
-        $buttonLink = $slice->getPrimary()->getLink('button_link');
-        $buttonLabel = $slice->getPrimary()->getText('button_label');
+        $buttonLinkUrl = Link::asUrl($slice->primary->button_link, $linkResolver);
+        $buttonLabel = RichText::asText($slice->primary->button_label);
         ?>
-        @if($buttonLink && $buttonLabel)
+        @if ($buttonLinkUrl && $buttonLabel)
             <div>
-                <a class="action cta-button l-grid-container" href="{!! $buttonLink->getUrl($linkResolver) !!}">
+                <a class="action cta-button l-grid-container" href="{!! $buttonLinkUrl !!}">
                     {!! $buttonLabel !!}
                 </a>
             </div>

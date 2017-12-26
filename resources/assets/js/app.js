@@ -44,8 +44,6 @@ $(document).ready(function () {
         pause: 6000,
     });
 
-
-
     /**
      * Handling language change
      */

@@ -7,9 +7,9 @@
 composer install
 npm install (or just yarn)
 
-# Build assets (development mode, resources/assets/js/ and resources/assets/css/)
+# Build assets (CSS and JS in development mode)
 npm run dev
 
-# Watch assets (development mode, resources/assets/js/ and resources/assets/css/)
+# Watch assets (CSS and JS in development mode)
 npm run watch
 ```

@@ -2,35 +2,34 @@
 
 namespace App;
 
-use Prismic;
-use Prismic\LinkResolver;
+use Prismic\LinkResolver as PrismicLinkResolver;
 
 /**
  * The link resolver is the code building URLs for pages corresponding to
  * a Prismic document.
  *
  * If you want to change the URLs of your site, you need to update this class
- * as well as the routes in app.php.
+ * as well as the routes in routes/web.php.
  */
-class PrismicLinkResolver extends LinkResolver
+class LinkResolver extends PrismicLinkResolver
 {
     /**
      * This function will be used to generate links to Prismic.io documents
      * As your project grows, you should update this function according to your routes
      *
-     * @param object $link
-     * @return string
+     * @param   object $link
+     * @return  string
      */
     public function resolve($link)
     {
-        if ($link instanceof Prismic\Fragment\Link\DocumentLink && $link->isBroken()) {
-            return;
+        if (property_exists($link, 'isBroken') && $link->isBroken === true) {
+            return '/';
         }
-        if ($link->getType() === 'homepage') {
-            return '/' . $link->getLang();
+        if ($link->type === 'homepage') {
+            return '/' . $link->lang;
         }
-        if ($link->getType() === 'page') {
-            return '/' . $link->getLang() . '/page/' . $link->getUid();
+        if ($link->type === 'page') {
+            return '/' . $link->lang . '/page/' . $link->uid;
         }
         return '/';
     }
