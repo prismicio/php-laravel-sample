@@ -29,7 +29,7 @@ class ConnectToPrismic
         $request['currentLang'] = config('i18n')['default'];
 
         // Connect to the prismic.io repository
-        if (config('prismic.url') !== 'https://your-repo-name.prismic.io/api/v2') {
+        if (config('prismic.url') !== 'https://your-repository-name.prismic.io/api/v2') {
             $request['api'] = Api::get(config('prismic.url'), config('prismic.token'));
         }
 

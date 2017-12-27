@@ -1,15 +1,7 @@
 <?php
 use Prismic\Dom\RichText;
 use Prismic\Dom\Link;
-
-function getAlternateLangage($languages, $langKey) {
-   foreach ($languages as $language) {
-       if ($language->lang === $langKey) {
-           return $language;
-       }
-   }
-   return null;
-}
+use Prismic\Document;
 ?>
 
 <header class="site-header l-grid-container dark">
@@ -35,7 +27,7 @@ function getAlternateLangage($languages, $langKey) {
                             if ($isCurrentLang) {
                                 $link = $linkResolver($document);
                             } else {
-                                $link = $linkResolver(getAlternateLangage($document->alternate_languages, $langKey));
+                                $link = $linkResolver(Document::getAlternateLanguage($document, $langKey));
                             }
                             ?>
                             <option
