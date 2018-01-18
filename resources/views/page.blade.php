@@ -27,7 +27,7 @@
                 @case ('gallery')
                     @include('partials.slices.gallery', ['slice' => $slice])
                     @break
-                 @case ('video')
+                @case ('video')
                     @include('partials.slices.video', ['slice' => $slice])
                     @break
             @endswitch

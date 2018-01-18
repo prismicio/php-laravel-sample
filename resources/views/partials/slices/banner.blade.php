@@ -11,11 +11,16 @@ use Prismic\Dom\Link;
         </div>
         <?php
         $linkUrl = Link::asUrl($slice->primary->link);
+        $targetAttr = property_exists($slice->primary->link, 'target') ? 'target="' . $slice->primary->link->target . '" rel="noopener"' : '';
         $linkText = RichText::asText($slice->primary->linkText);
         ?>
         @if ($linkUrl && $linkText)
             <div>
-                <a class="cta-button l-grid-container" href="{!! $linkUrl !!}">
+                <a
+                    class="cta-button l-grid-container"
+                    href="{!! $linkUrl !!}"
+                    {!! $targetAttr !!}
+                >
                     {!! $linkText !!}
                 </a>
             </div>
