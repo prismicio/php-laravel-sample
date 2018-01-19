@@ -4,9 +4,11 @@ use Prismic\Dom\Link;
 ?>
 
 <section class="highlight-section l-grid-container">
-    <div class="illustration">
-        <img src="{!! $slice->primary->image->url !!}" alt="{!! $slice->primary->image->alt !!}">
-    </div>
+    @if (isset($slice->primary->image->url))
+        <div class="illustration">
+            <img src="{!! $slice->primary->image->url !!}" alt="{!! $slice->primary->image->alt !!}">
+        </div>
+    @endif
     <div class="content">
         <div class="title">
             {!! RichText::asHtml($slice->primary->title, $linkResolver) !!}

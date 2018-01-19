@@ -11,7 +11,9 @@ use Prismic\Dom\RichText;
             {!! RichText::asHtml($slice->primary->text, $linkResolver) !!}
         </div>
     </div>
-    <div class="illustration">
-        <img src="{!! $slice->primary->image->url !!}" alt="{!! $slice->primary->image->alt !!}">
-    </div>
+    @if (isset($slice->primary->image->url))
+        <div class="illustration">
+            <img src="{!! $slice->primary->image->url !!}" alt="{!! $slice->primary->image->alt !!}">
+        </div>
+    @endif
 </div>

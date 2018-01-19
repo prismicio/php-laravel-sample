@@ -9,16 +9,23 @@ use Prismic\Dom\Link;
 
     <div class="homepage" data-wio-id="{!! $document->id !!}">
 
-        <section class="homepage-banner" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url({!! $document->data->backgroundImage->url !!});">
+        <?php $backgroundImageUrl = isset($document->data->backgroundImage->url) ? $document->data->backgroundImage->url : ''; ?>
+        <section class="homepage-banner" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url({!! $backgroundImageUrl !!});">
             <div class="banner-content l-grid-container">
                 <h1 class="banner-title">{!! RichText::asText($document->data->title) !!}</h1>
                 {!! RichText::asHtml($document->data->tagline, $linkResolver) !!}
-                <a
-                    class="banner-button"
-                    href="{!! Link::asUrl($document->data->buttonLink, $linkResolver) !!}"
-                >
-                    {!! $document->data->buttonText !!}
-                </a>
+                <?php
+                $buttonUrl = Link::asUrl($document->data->buttonLink, $linkResolver);
+                $buttonText = $document->data->buttonText;
+                ?>
+                @if ($buttonUrl && $buttonText)
+                    <a
+                        class="banner-button"
+                        href="{!! $buttonUrl !!}"
+                    >
+                        {!! $buttonText !!}
+                    </a>
+                @endif
             </div>
         </section>
 

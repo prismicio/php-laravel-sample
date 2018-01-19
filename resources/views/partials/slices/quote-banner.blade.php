@@ -2,9 +2,10 @@
 use Prismic\Dom\RichText;
 
 $sectionClasses = strtolower(implode(' ', [$slice->primary->quote_position, $slice->primary->quote_style]));
+$backgroundImageUrl = isset($slice->primary->background_image->url) ? $slice->primary->background_image->url : '';
 ?>
 
-<section class="quote-banner l-grid-container {!! $sectionClasses !!}" style="background-image: url({!! $slice->primary->background_image->url !!});">
+<section class="quote-banner l-grid-container {!! $sectionClasses !!}" style="background-image: url({!! $backgroundImageUrl !!});">
     <div class="l-grid-container container-text">
         <div class="quote-container l-grid-container">
             <div class="quote">

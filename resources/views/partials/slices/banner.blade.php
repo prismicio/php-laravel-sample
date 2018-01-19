@@ -4,7 +4,9 @@ use Prismic\Dom\Link;
 ?>
 
 <section class="banner l-content-section">
-    <img src="{!! $slice->primary->image->url !!}" alt="{!! $slice->primary->image->alt !!}">
+    @if (isset($slice->primary->image->url))
+        <img src="{!! $slice->primary->image->url !!}" alt="{!! $slice->primary->image->alt !!}">
+    @endif
     <div class="cta">
         <div class="cta-text l-grid-container">
             {!! RichText::asText($slice->primary->title) !!}

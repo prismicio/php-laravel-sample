@@ -6,7 +6,9 @@ use Prismic\Dom\Link;
 <section class="gallery l-content-section l-grid-container">
     @foreach ($slice->items as $item)
         <div class="gallery-item">
-            <img src="{!! $item->image->url !!}" alt="{!! $item->image->alt !!}">
+            @if (isset($item->image->url))
+                <img src="{!! $item->image->url !!}" alt="{!! $item->image->alt !!}">
+            @endif
             {!! RichText::asHtml($item->description, $linkResolver) !!}
             <?php
             $linkUrl = Link::asUrl($item->link, $linkResolver);
