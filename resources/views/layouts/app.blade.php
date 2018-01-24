@@ -18,7 +18,7 @@
     @if (isset($meta['description']))
         <meta description="{!! $meta['description'] !!}">
     @else
-        <meta description="Laravel sample website by prismic.io">
+        <meta description="Laravel sample website with content retrieving from prismic.io">
     @endif
 
     {{--  Favicon  --}}

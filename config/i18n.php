@@ -10,12 +10,12 @@ return [
 
     'languages' => [
         [
-            'key' => 'fr-fr',
-            'label' => 'Français',
-        ],
-        [
             'key' => 'en-us',
             'label' => 'English',
+        ],
+        [
+            'key' => 'fr-fr',
+            'label' => 'Français',
         ],
         [
             'key' => 'de-de',
@@ -29,6 +29,6 @@ return [
     |--------------------------------------------------------------------------
     */
 
-    'default' => 'fr-fr',
+    'default' => 'en-us',
 
 ];

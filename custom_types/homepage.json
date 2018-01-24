@@ -3,8 +3,9 @@
     "title" : {
       "type" : "StructuredText",
       "config" : {
-        "placeholder" : "Site Title...",
-        "single" : "heading2"
+        "single" : "heading1",
+        "label" : "StructuredText",
+        "placeholder" : "Site Title..."
       }
     },
     "tagline" : {
@@ -16,28 +17,29 @@
         "placeholder" : "Site Tagline..."
       }
     },
-    "buttonLink" : {
+    "button_link" : {
       "config" : {
         "placeholder" : "Button Link",
-        "allowTargetBlank" : true,
         "label" : "Button Link"
       },
       "type" : "Link",
       "fieldset" : "Button Link"
     },
-    "buttonText" : {
-      "type" : "Text",
+    "button_text" : {
       "config" : {
-        "placeholder" : "Button Text"
-      }
+        "placeholder" : "Button Text",
+        "label" : "Text"
+      },
+      "type" : "Text"
     },
-    "backgroundImage" : {
+    "background_image" : {
       "type" : "Image",
       "config" : {
-        "placeholder" : "Background Image",
         "constraint" : {
           "width" : 2000
-        }
+        },
+        "thumbnails" : [ ],
+        "label" : "Image"
       }
     },
     "body" : {
@@ -129,7 +131,7 @@
                   "placeholder" : "Optional Link"
                 }
               },
-              "linkText" : {
+              "link_text" : {
                 "type" : "StructuredText",
                 "config" : {
                   "placeholder" : "Button Label",
@@ -148,7 +150,7 @@
               }
             }
           },
-          "banner_look" : {
+          "quote_banner" : {
             "type" : "Slice",
             "fieldset" : "Quote Banner",
             "description" : "A quote banner with a background image ",
@@ -203,7 +205,7 @@
               }
             }
           },
-          "editorial_look" : {
+          "featured_section" : {
             "type" : "Slice",
             "fieldset" : "Featured Section",
             "description" : "A featured section with title, text and portrait image",
@@ -268,12 +270,9 @@
               "text" : {
                 "type" : "StructuredText",
                 "config" : {
-                  "placeholder" : "type your text here...",
-                  "labels" : {
-                    "" : [ {
-                      "name" : "quote"
-                    } ]
-                  }
+                  "multi" : "paragraph, preformatted, heading1, heading2, heading3, heading4, heading5, heading6, strong, em, hyperlink, image, embed, list-item, o-list-item, o-list-item",
+                  "label" : "StructuredText",
+                  "placeholder" : "type your text here..."
                 }
               }
             }
@@ -325,7 +324,7 @@
                   "placeholder" : "Optional Link"
                 }
               },
-              "linkText" : {
+              "link_text" : {
                 "type" : "Text",
                 "config" : {
                   "placeholder" : "Optional Link Text"
@@ -350,6 +349,20 @@
             }
           }
         }
+      }
+    }
+  },
+  "Meta" : {
+    "meta_title" : {
+      "type" : "Text",
+      "config" : {
+        "label" : "Title"
+      }
+    },
+    "meta_description" : {
+      "type" : "Text",
+      "config" : {
+        "label" : "Description"
       }
     }
   }

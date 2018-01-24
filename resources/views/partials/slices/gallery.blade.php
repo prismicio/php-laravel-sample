@@ -12,7 +12,7 @@ use Prismic\Dom\Link;
             {!! RichText::asHtml($item->description, $linkResolver) !!}
             <?php
             $linkUrl = Link::asUrl($item->link, $linkResolver);
-            $linkText = $item->linkText;
+            $linkText = $item->link_text;
             ?>
             @if ($linkUrl && $linkText)
                 <p class="gallery-link">

@@ -12,10 +12,10 @@
                 @case ('banner')
                     @include('partials.slices.banner', ['slice' => $slice])
                     @break
-                @case ('banner_look')
+                @case ('quote_banner')
                     @include('partials.slices.quote-banner', ['slice' => $slice])
                     @break
-                @case ('editorial_look')
+                @case ('featured_section')
                     @include('partials.slices.featured-section', ['slice' => $slice])
                     @break
                 @case ('text_section')

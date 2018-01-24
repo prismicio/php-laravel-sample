@@ -15,7 +15,7 @@ use Prismic\Dom\Link;
             <?php
             $linkUrl = Link::asUrl($slice->primary->link);
             $targetAttr = property_exists($slice->primary->link, 'target') ? 'target="' . $slice->primary->link->target . '" rel="noopener"' : '';
-            $linkText = RichText::asText($slice->primary->linkText);
+            $linkText = RichText::asText($slice->primary->link_text);
             ?>
             @if ($linkUrl && $linkText)
                 <div>

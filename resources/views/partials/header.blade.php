@@ -5,13 +5,14 @@ use Prismic\Document;
 ?>
 
 @if (isset($menu))
+
     <header class="site-header l-grid-container dark">
         <a href="/{!! $currentLang !!}">
             <div class="logo">{!! RichText::asText($menu->data->title) !!}</div>
         </a>
         <nav>
             <ul>
-                @foreach ($menu->data->menuLinks as $item)
+                @foreach ($menu->data->menu_links as $item)
                     @if ($item->link && $item->label)
                         <li>
                             <a href="{!! Link::asUrl($item->link, $linkResolver) !!}">{!! $item->label !!}</a>
@@ -45,4 +46,5 @@ use Prismic\Document;
             </ul>
         </nav>
     </header>
+
 @endif

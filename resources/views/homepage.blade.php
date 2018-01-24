@@ -9,14 +9,14 @@ use Prismic\Dom\Link;
 
     <div class="homepage" data-wio-id="{!! $document->id !!}">
 
-        <?php $backgroundImageUrl = isset($document->data->backgroundImage->url) ? $document->data->backgroundImage->url : ''; ?>
+        <?php $backgroundImageUrl = isset($document->data->background_image->url) ? $document->data->background_image->url : ''; ?>
         <section class="homepage-banner" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url({!! $backgroundImageUrl !!});">
             <div class="banner-content l-grid-container">
                 <h1 class="banner-title">{!! RichText::asText($document->data->title) !!}</h1>
                 {!! RichText::asHtml($document->data->tagline, $linkResolver) !!}
                 <?php
-                $buttonUrl = Link::asUrl($document->data->buttonLink, $linkResolver);
-                $buttonText = $document->data->buttonText;
+                $buttonUrl = Link::asUrl($document->data->button_link, $linkResolver);
+                $buttonText = $document->data->button_text;
                 ?>
                 @if ($buttonUrl && $buttonText)
                     <a
@@ -37,10 +37,10 @@ use Prismic\Dom\Link;
                 @case ('banner')
                     @include('partials.slices.banner', ['slice' => $slice])
                     @break
-                @case ('banner_look')
+                @case ('quote_banner')
                     @include('partials.slices.quote-banner', ['slice' => $slice])
                     @break
-                @case ('editorial_look')
+                @case ('featured_section')
                     @include('partials.slices.featured-section', ['slice' => $slice])
                     @break
                 @case ('text_section')

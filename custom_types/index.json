@@ -5,7 +5,7 @@
   "value": "homepage.json"
 }, {
   "id": "menu",
-  "name": "menu",
+  "name": "Menu",
   "repeatable": false,
   "value": "menu.json"
 }, {

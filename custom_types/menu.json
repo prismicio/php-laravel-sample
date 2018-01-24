@@ -7,7 +7,7 @@
         "single" : "heading1"
       }
     },
-    "menuLinks" : {
+    "menu_links" : {
       "type" : "Group",
       "fieldset" : "Menu Links",
       "config" : {

@@ -74,8 +74,8 @@ Route::get('/{lang}', function ($lang, Request $request) {
 
     // Fill meta array
     $meta = [
-        'title' => $document->data->meta_title,
-        'description' => $document->data->meta_description,
+        'title' => isset($document->data->meta_title) ? $document->data->meta_title : null,
+        'description' => isset($document->data->meta_description) ? $document->data->meta_description : null,
     ];
 
     // Render the page
@@ -107,8 +107,8 @@ Route::get('/{lang}/page/{uid}', function ($lang, $uid, Request $request) {
 
     // Fill meta array
     $meta = [
-        'title' => $document->data->meta_title,
-        'description' => $document->data->meta_description,
+        'title' => isset($document->data->meta_title) ? $document->data->meta_title : null,
+        'description' => isset($document->data->meta_description) ? $document->data->meta_description : null,
     ];
 
     // Render the page
