@@ -72,8 +72,14 @@ Route::get('/{lang}', function ($lang, Request $request) {
         return abort(404);
     }
 
+    // Fill meta array
+    $meta = [
+        'title' => $document->data->meta_title,
+        'description' => $document->data->meta_description,
+    ];
+
     // Render the page
-    return view('homepage', ['document' => $document]);
+    return view('homepage', ['document' => $document, 'meta' => $meta]);
 });
 
 /*
@@ -99,6 +105,12 @@ Route::get('/{lang}/page/{uid}', function ($lang, $uid, Request $request) {
         return abort(404);
     }
 
+    // Fill meta array
+    $meta = [
+        'title' => $document->data->meta_title,
+        'description' => $document->data->meta_description,
+    ];
+
     // Render the page
-    return view('page', ['document' => $document]);
+    return view('page', ['document' => $document, 'meta' => $meta]);
 });

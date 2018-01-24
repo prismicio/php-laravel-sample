@@ -1,11 +1,27 @@
 <!DOCTYPE html>
 <html lang="{!! $currentLang !!}">
 <head>
+    {{--  Meta  --}}
     <meta charset="utf-8">
-    <title>laravel-sample</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="author" content="prismic.io">
+
+    {{--  Meta Title --}}
+    @if (isset($meta['title']))
+        <title>{!! $meta['title'] !!}</title>
+    @else
+        <title>Laravel sample</title>
+    @endif
+
+    {{--  Meta Description --}}
+    @if (isset($meta['description']))
+        <meta description="{!! $meta['description'] !!}">
+    @else
+        <meta description="Laravel sample website by prismic.io">
+    @endif
+
+    {{--  Favicon  --}}
     <link href="{{ asset('img/favicon.png') }}" rel="shortcut icon" type="image/x-icon">
 
     {{--  Fonts  --}}

@@ -14,7 +14,7 @@ return [
             'label' => 'Français',
         ],
         [
-            'key' => 'en-gb',
+            'key' => 'en-us',
             'label' => 'English',
         ],
         [
