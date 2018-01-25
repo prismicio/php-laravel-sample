@@ -15,9 +15,6 @@
                 @case ('quote_banner')
                     @include('partials.slices.quote-banner', ['slice' => $slice])
                     @break
-                @case ('featured_section')
-                    @include('partials.slices.featured-section', ['slice' => $slice])
-                    @break
                 @case ('text_section')
                     @include('partials.slices.text-section', ['slice' => $slice])
                     @break
