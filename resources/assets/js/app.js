@@ -23,6 +23,7 @@
 
 
 
+window.$ = window.jQuery = require('jquery');
 require('./vendor/lightslider');
 
 $(document).ready(function () {

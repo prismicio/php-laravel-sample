@@ -38,7 +38,6 @@
             endpoint: '{{ $endpoint }}'
         };
     </script>
-    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
     <script src="https://static.cdn.prismic.io/prismic.js"></script>
     <script src="{{ asset('js/app.js') }}"></script>
 </head>
