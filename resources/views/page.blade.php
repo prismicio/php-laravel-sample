@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <div data-wio-id="{!! $document->id !!}">
+    <div data-wio-id="{{ $document->id }}">
 
         @foreach ($document->data->body as $slice)
             @switch ($slice->slice_type)

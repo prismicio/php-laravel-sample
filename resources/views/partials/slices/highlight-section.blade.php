@@ -6,7 +6,7 @@ use Prismic\Dom\Link;
 <section class="highlight-section l-grid-container">
     @if (isset($slice->primary->image->url))
         <div class="illustration">
-            <img src="{!! $slice->primary->image->url !!}" alt="{!! $slice->primary->image->alt !!}">
+            <img src="{{ $slice->primary->image->url }}" alt="{{ $slice->primary->image->alt }}">
         </div>
     @endif
     <div class="content">
@@ -22,8 +22,8 @@ use Prismic\Dom\Link;
         ?>
         @if ($buttonLinkUrl && $buttonLabel)
             <div>
-                <a class="action cta-button l-grid-container" href="{!! $buttonLinkUrl !!}">
-                    {!! $buttonLabel !!}
+                <a class="action cta-button l-grid-container" href="{{ $buttonLinkUrl }}">
+                    {{ $buttonLabel }}
                 </a>
             </div>
         @endif

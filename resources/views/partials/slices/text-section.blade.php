@@ -9,6 +9,6 @@ if ($sliceLabel) {
 }
 ?>
 
-<section class="text-section l-grid-container {!! $sectionClass !!}">
+<section class="text-section l-grid-container {{ $sectionClass }}">
     {!! RichText::asHtml($slice->primary->text, $linkResolver) !!}
 </section>

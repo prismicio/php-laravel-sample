@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{!! $currentLang !!}">
+<html lang="{{ $currentLang }}">
 <head>
     {{--  Meta  --}}
     <meta charset="utf-8">
@@ -9,14 +9,14 @@
 
     {{--  Meta Title --}}
     @if (isset($meta['title']))
-        <title>{!! $meta['title'] !!}</title>
+        <title>{{ $meta['title'] }}</title>
     @else
         <title>Laravel sample</title>
     @endif
 
     {{--  Meta Description --}}
     @if (isset($meta['description']))
-        <meta description="{!! $meta['description'] !!}">
+        <meta description="{{ $meta['description'] }}">
     @else
         <meta description="Laravel sample website with content retrieving from prismic.io">
     @endif

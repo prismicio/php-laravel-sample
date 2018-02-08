@@ -7,7 +7,7 @@ use Prismic\Dom\Link;
     @foreach ($slice->items as $item)
         <div class="gallery-item">
             @if (isset($item->image->url))
-                <img src="{!! $item->image->url !!}" alt="{!! $item->image->alt !!}">
+                <img src="{{ $item->image->url }}" alt="{{ $item->image->alt }}">
             @endif
             {!! RichText::asHtml($item->description, $linkResolver) !!}
             <?php
@@ -16,8 +16,8 @@ use Prismic\Dom\Link;
             ?>
             @if ($linkUrl && $linkText)
                 <p class="gallery-link">
-                    <a href="{!! $linkUrl !!}">
-                        {!! $linkText !!}
+                    <a href="{{ $linkUrl }}">
+                        {{ $linkText }}
                     </a>
                 </p>
             @endif

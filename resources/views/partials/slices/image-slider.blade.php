@@ -3,7 +3,7 @@
         @foreach ($slice->items as $item)
             @if (isset($item->image->url))
                 <li>
-                    <img src="{!! $item->image->url !!}" alt="{!! $item->image->alt !!}">
+                    <img src="{{ $item->image->url }}" alt="{{ $item->image->alt }}">
                 </li>
             @endif
         @endforeach

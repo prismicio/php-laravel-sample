@@ -7,15 +7,15 @@ use Prismic\Document;
 @if (isset($menu))
 
     <header class="site-header l-grid-container dark">
-        <a href="/{!! $currentLang !!}">
-            <div class="logo">{!! RichText::asText($menu->data->title) !!}</div>
+        <a href="/{{ $currentLang }}">
+            <div class="logo">{{ RichText::asText($menu->data->title) }}</div>
         </a>
         <nav>
             <ul>
                 @foreach ($menu->data->menu_links as $item)
                     @if ($item->link && $item->label)
                         <li>
-                            <a href="{!! Link::asUrl($item->link, $linkResolver) !!}">{!! $item->label !!}</a>
+                            <a href="{{ Link::asUrl($item->link, $linkResolver) }}">{{ $item->label }}</a>
                         </li>
                     @endif
                 @endforeach
@@ -33,11 +33,11 @@ use Prismic\Document;
                                 }
                                 ?>
                                 <option
-                                    value="{!! $langKey !!}"
-                                    href="{!! $link !!}"
-                                    {!! $isCurrentLang ? 'selected' : false !!}
+                                    value="{{ $langKey }}"
+                                    href="{{ $link }}"
+                                    {{ $isCurrentLang ? 'selected' : false }}
                                 >
-                                    {!! $language['label'] !!}
+                                    {{ $language['label'] }}
                                 </option>
                             @endforeach
                         </select>
