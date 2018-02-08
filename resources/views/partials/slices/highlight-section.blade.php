@@ -1,7 +1,10 @@
-<?php
-use Prismic\Dom\RichText;
-use Prismic\Dom\Link;
-?>
+@php
+    use Prismic\Dom\RichText;
+    use Prismic\Dom\Link;
+
+    $buttonLinkUrl = Link::asUrl($slice->primary->button_link, $linkResolver);
+    $buttonLabel = RichText::asText($slice->primary->button_label);
+@endphp
 
 <section class="highlight-section l-grid-container">
     @if (isset($slice->primary->image->url))
@@ -16,10 +19,6 @@ use Prismic\Dom\Link;
         <div class="desc">
             {!! RichText::asHtml($slice->primary->description, $linkResolver) !!}
         </div>
-        <?php
-        $buttonLinkUrl = Link::asUrl($slice->primary->button_link, $linkResolver);
-        $buttonLabel = RichText::asText($slice->primary->button_label);
-        ?>
         @if ($buttonLinkUrl && $buttonLabel)
             <div>
                 <a class="action cta-button l-grid-container" href="{{ $buttonLinkUrl }}">

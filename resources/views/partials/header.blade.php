@@ -1,8 +1,8 @@
-<?php
-use Prismic\Dom\RichText;
-use Prismic\Dom\Link;
-use Prismic\Document;
-?>
+@php
+    use Prismic\Dom\RichText;
+    use Prismic\Dom\Link;
+    use Prismic\Document;
+@endphp
 
 @if (isset($menu))
 
@@ -23,15 +23,15 @@ use Prismic\Document;
                     <div class="language-select-wrapper">
                         <select class="language-select" id="language-select">
                             @foreach (config('i18n.languages') as $language)
-                                <?php
-                                $langKey = $language['key'];
-                                $isCurrentLang = $langKey === $currentLang;
-                                if ($isCurrentLang) {
-                                    $link = $linkResolver($document);
-                                } else {
-                                    $link = $linkResolver(Document::getAlternateLanguage($document, $langKey));
-                                }
-                                ?>
+                                @php
+                                    $langKey = $language['key'];
+                                    $isCurrentLang = $langKey === $currentLang;
+                                    if ($isCurrentLang) {
+                                        $link = $linkResolver($document);
+                                    } else {
+                                        $link = $linkResolver(Document::getAlternateLanguage($document, $langKey));
+                                    }
+                                @endphp
                                 <option
                                     value="{{ $langKey }}"
                                     href="{{ $link }}"

@@ -1,7 +1,11 @@
-<?php
-use Prismic\Dom\RichText;
-use Prismic\Dom\Link;
-?>
+@php
+    use Prismic\Dom\RichText;
+    use Prismic\Dom\Link;
+
+    $backgroundImageUrl = isset($document->data->background_image->url) ? $document->data->background_image->url : '';
+    $buttonUrl = Link::asUrl($document->data->button_link, $linkResolver);
+    $buttonText = $document->data->button_text;
+@endphp
 
 @extends('layouts.app')
 
@@ -9,15 +13,10 @@ use Prismic\Dom\Link;
 
     <div class="homepage" data-wio-id="{{ $document->id }}">
 
-        <?php $backgroundImageUrl = isset($document->data->background_image->url) ? $document->data->background_image->url : ''; ?>
         <section class="homepage-banner" style="background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url({{ $backgroundImageUrl }});">
             <div class="banner-content l-grid-container">
                 <h1 class="banner-title">{{ RichText::asText($document->data->title) }}</h1>
                 {!! RichText::asHtml($document->data->tagline, $linkResolver) !!}
-                <?php
-                $buttonUrl = Link::asUrl($document->data->button_link, $linkResolver);
-                $buttonText = $document->data->button_text;
-                ?>
                 @if ($buttonUrl && $buttonText)
                     <a
                         class="banner-button"

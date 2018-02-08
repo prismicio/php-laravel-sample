@@ -1,7 +1,11 @@
-<?php
-use Prismic\Dom\RichText;
-use Prismic\Dom\Link;
-?>
+@php
+    use Prismic\Dom\RichText;
+    use Prismic\Dom\Link;
+
+    $linkUrl = Link::asUrl($slice->primary->link);
+    $targetAttr = property_exists($slice->primary->link, 'target') ? 'target="' . $slice->primary->link->target . '" rel="noopener"' : '';
+    $linkText = RichText::asText($slice->primary->link_text);
+@endphp
 
 <section class="banner l-content-section">
     @if (isset($slice->primary->image->url))
@@ -12,11 +16,6 @@ use Prismic\Dom\Link;
             <div class="cta-text l-grid-container">
                 {{ RichText::asText($slice->primary->title) }}
             </div>
-            <?php
-            $linkUrl = Link::asUrl($slice->primary->link);
-            $targetAttr = property_exists($slice->primary->link, 'target') ? 'target="' . $slice->primary->link->target . '" rel="noopener"' : '';
-            $linkText = RichText::asText($slice->primary->link_text);
-            ?>
             @if ($linkUrl && $linkText)
                 <div>
                     <a
