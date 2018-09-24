@@ -20,7 +20,7 @@ class LinkResolver extends PrismicLinkResolver
      * @param  object  $link
      * @return string
      */
-    public function resolve($link)
+    public function resolve($link): ?String
     {
         if (isset($link) === false || property_exists($link, 'isBroken') && $link->isBroken === true) {
             return '/404';

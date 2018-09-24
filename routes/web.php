@@ -42,7 +42,7 @@ Route::get('/preview', function (Request $request) {
     if (!isset($token)) {
         return abort(400, 'Bad Request');
     }
-    $url = $request->input('api')->previewSession($token, $request->input('linkResolver'), '/');
+    $url = $request->attributes->get('api')->previewSession($token, $request->attributes->get('linkResolver'), '/');
 
     setcookie(Prismic\PREVIEW_COOKIE, $token, time() + 1800, '/', null, false, false);
     return response(null, 302)->header('Location', $url);
@@ -55,7 +55,7 @@ Route::get('/preview', function (Request $request) {
 */
 
 Route::get('/', function (Request $request) {
-    return redirect('/' . $request->input('currentLang'));
+    return redirect('/' . $request->attributes->get('currentLang'));
 });
 
 Route::get('/{lang}', function ($lang, Request $request) {
@@ -68,7 +68,7 @@ Route::get('/{lang}', function ($lang, Request $request) {
     $request->merge(['currentLang' => $lang]);
 
     // Query the homepage document by single type
-    $document = $request->input('api')->getSingle('homepage', ['lang' => $lang]);
+    $document = $request->attributes->get('api')->getSingle('homepage', ['lang' => $lang]);
 
     // Render 404 page if homepage document doesn't exist
     if (isset($document) === false) {
@@ -101,7 +101,7 @@ Route::get('/{lang}/page/{uid}', function ($lang, $uid, Request $request) {
     $request->merge(['currentLang' => $lang]);
 
     // Query the page document by UID
-    $document = $request->input('api')->getByUID('page', $uid, ['lang' => $lang]);
+    $document = $request->attributes->get('api')->getByUID('page', $uid, ['lang' => $lang]);
 
     // Render 404 page if page document doesn't exist
     if (isset($document) === false) {

@@ -16,16 +16,16 @@ class PrismicComposer
     public function __construct(Request $request)
     {
         // Define the prismic.io repository API endpoint
-        $this->endpoint = $request->input('endpoint');
+        $this->endpoint = $request->attributes->get('endpoint');
 
         // Define the link resolver
-        $this->linkResolver = $request->input('linkResolver');
+        $this->linkResolver = $request->attributes->get('linkResolver');
 
         // Define the current language
-        $this->currentLang = $request->input('currentLang');
+        $this->currentLang = $request->attributes->get('currentLang');
 
         // Define the menu content
-        $this->menu = $request->input('api')->getSingle('menu', ['lang' => $this->currentLang]);
+        $this->menu = $request->attributes->get('api')->getSingle('menu', ['lang' => $this->currentLang]);
     }
 
     /**
