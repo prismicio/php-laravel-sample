@@ -43,8 +43,6 @@ Route::get('/preview', function (Request $request) {
         return abort(400, 'Bad Request');
     }
     $url = $request->attributes->get('api')->previewSession($token, $request->attributes->get('linkResolver'), '/');
-
-    setcookie(Prismic\PREVIEW_COOKIE, $token, time() + 1800, '/', null, false, false);
     return response(null, 302)->header('Location', $url);
 });
 
@@ -61,7 +59,7 @@ Route::get('/', function (Request $request) {
 Route::get('/{lang}', function ($lang, Request $request) {
     // Render 404 page if lang doesn't exist
     if (langExists($lang) === false) {
-        return abort(404);
+        return view('404');
     }
 
     // Set the current lang
@@ -72,7 +70,7 @@ Route::get('/{lang}', function ($lang, Request $request) {
 
     // Render 404 page if homepage document doesn't exist
     if (isset($document) === false) {
-        return abort(404);
+        return view('404');
     }
 
     // Fill meta array
@@ -94,7 +92,7 @@ Route::get('/{lang}', function ($lang, Request $request) {
 Route::get('/{lang}/page/{uid}', function ($lang, $uid, Request $request) {
     // Render 404 page if lang doesn't exist
     if (langExists($lang) === false) {
-        return abort(404);
+        return view('404');
     }
 
     // Set the current lang
@@ -105,7 +103,7 @@ Route::get('/{lang}/page/{uid}', function ($lang, $uid, Request $request) {
 
     // Render 404 page if page document doesn't exist
     if (isset($document) === false) {
-        return abort(404);
+        return view('404');
     }
 
     // Fill meta array
@@ -117,3 +115,13 @@ Route::get('/{lang}/page/{uid}', function ($lang, $uid, Request $request) {
     // Render the page
     return view('page', ['document' => $document, 'meta' => $meta]);
 });
+
+/*
+|--------------------------------------------------------------------------
+| 404 Page not found
+|--------------------------------------------------------------------------
+*/
+
+Route::get('/{any}', function ($any) {
+    return view('404');
+})->where('any', '.*');

@@ -19,30 +19,32 @@
                         </li>
                     @endif
                 @endforeach
-                <li>
-                    <div class="language-select-wrapper">
-                        <select class="language-select" id="language-select">
-                            @foreach (config('i18n.languages') as $language)
-                                @php
-                                    $langKey = $language['key'];
-                                    $isCurrentLang = $langKey === $currentLang;
-                                    if ($isCurrentLang) {
-                                        $link = $linkResolver($document);
-                                    } else {
-                                        $link = $linkResolver(Document::getAlternateLanguage($document, $langKey));
-                                    }
-                                @endphp
-                                <option
-                                    value="{{ $langKey }}"
-                                    href="{{ $link }}"
-                                    {{ $isCurrentLang ? 'selected' : false }}
-                                >
-                                    {{ $language['label'] }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </div>
-                </li>
+                @if (isset($document))
+                    <li>
+                        <div class="language-select-wrapper">
+                            <select class="language-select" id="language-select">
+                                @foreach (config('i18n.languages') as $language)
+                                    @php
+                                        $langKey = $language['key'];
+                                        $isCurrentLang = $langKey === $currentLang;
+                                        if ($isCurrentLang) {
+                                            $link = $linkResolver($document);
+                                        } else {
+                                            $link = $linkResolver(Document::getAlternateLanguage($document, $langKey));
+                                        }
+                                    @endphp
+                                    <option
+                                        value="{{ $langKey }}"
+                                        href="{{ $link }}"
+                                        {{ $isCurrentLang ? 'selected' : false }}
+                                    >
+                                        {{ $language['label'] }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </li>
+                @endif
             </ul>
         </nav>
     </header>
