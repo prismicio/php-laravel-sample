@@ -26,10 +26,10 @@ class LinkResolver extends PrismicLinkResolver
             return '/404';
         }
         if ($link->type === 'homepage') {
-            return '/' . $link->lang;
+            return '/';
         }
         if ($link->type === 'page') {
-            return '/' . $link->lang . '/page/' . $link->uid;
+            return '/'. $link->uid;
         }
         return '/';
     }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ $currentLang }}">
+<html lang="en-us">
 <head>
     {{--  Meta  --}}
     <meta charset="utf-8">

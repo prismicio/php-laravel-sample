@@ -7,7 +7,7 @@
 @if (isset($menu))
 
     <header class="site-header l-grid-container dark">
-        <a href="/{{ $currentLang }}">
+        <a href="/">
             <div class="logo">{{ RichText::asText($menu->data->title) }}</div>
         </a>
         <nav>

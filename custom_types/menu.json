@@ -9,22 +9,25 @@
     },
     "menu_links" : {
       "type" : "Group",
-      "fieldset" : "Menu Links",
       "config" : {
         "fields" : {
           "label" : {
-            "type" : "Text",
+            "type" : "StructuredText",
             "config" : {
-              "placeholder" : "Link label"
+              "single" : "paragraph",
+              "label" : "Link Label",
+              "placeholder" : "Link Label..."
             }
           },
           "link" : {
             "type" : "Link",
             "config" : {
-              "placeholder" : "Link"
+              "label" : "Link",
+              "placeholder" : "Select a Link..."
             }
           }
-        }
+        },
+        "label" : "Menu Links"
       }
     }
   }

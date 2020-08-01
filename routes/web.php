@@ -15,21 +15,6 @@ use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
-| Helpers
-|--------------------------------------------------------------------------
-*/
-
-function langExists($lang) {
-    foreach (config('i18n.languages') as $language) {
-        if ($language['key'] === $lang) {
-            return true;
-        }
-    }
-    return false;
-}
-
-/*
-|--------------------------------------------------------------------------
 | Preview route
 |--------------------------------------------------------------------------
 |
@@ -53,20 +38,8 @@ Route::get('/preview', function (Request $request) {
 */
 
 Route::get('/', function (Request $request) {
-    return redirect('/' . $request->attributes->get('currentLang'));
-});
-
-Route::get('/{lang}', function ($lang, Request $request) {
-    // Render 404 page if lang doesn't exist
-    if (langExists($lang) === false) {
-        return view('404');
-    }
-
-    // Set the current lang
-    $request->merge(['currentLang' => $lang]);
-
     // Query the homepage document by single type
-    $document = $request->attributes->get('api')->getSingle('homepage', ['lang' => $lang]);
+    $document = $request->attributes->get('api')->getSingle('homepage');
 
     // Render 404 page if homepage document doesn't exist
     if (isset($document) === false) {
@@ -89,17 +62,9 @@ Route::get('/{lang}', function ($lang, Request $request) {
 |--------------------------------------------------------------------------
 */
 
-Route::get('/{lang}/page/{uid}', function ($lang, $uid, Request $request) {
-    // Render 404 page if lang doesn't exist
-    if (langExists($lang) === false) {
-        return view('404');
-    }
-
-    // Set the current lang
-    $request->merge(['currentLang' => $lang]);
-
+Route::get('/{uid}', function ($uid, Request $request) {
     // Query the page document by UID
-    $document = $request->attributes->get('api')->getByUID('page', $uid, ['lang' => $lang]);
+    $document = $request->attributes->get('api')->getByUID('page', $uid);
 
     // Render 404 page if page document doesn't exist
     if (isset($document) === false) {

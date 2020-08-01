@@ -25,7 +25,7 @@ class PrismicComposer
         $this->currentLang = $request->attributes->get('currentLang');
 
         // Define the menu content
-        $this->menu = $request->attributes->get('api')->getSingle('menu', ['lang' => $this->currentLang]);
+        $this->menu = $request->attributes->get('api')->getSingle('menu');
     }
 
     /**
