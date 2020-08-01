@@ -10,6 +10,8 @@ class PrismicComposer
     /**
      * Create a new prismic composer.
      *
+     * Properties here are set in App\Http\Middleware\ConnectToPrismic
+     *
      * @param  Request  $request
      * @return void
      */
@@ -20,9 +22,6 @@ class PrismicComposer
 
         // Define the link resolver
         $this->linkResolver = $request->attributes->get('linkResolver');
-
-        // Define the current language
-        $this->currentLang = $request->attributes->get('currentLang');
 
         // Define the menu content
         $this->menu = $request->attributes->get('api')->getSingle('menu');
@@ -38,7 +37,6 @@ class PrismicComposer
     {
         $view->with('endpoint', $this->endpoint);
         $view->with('linkResolver', $this->linkResolver);
-        $view->with('currentLang', $this->currentLang);
         $view->with('menu', $this->menu);
     }
 }

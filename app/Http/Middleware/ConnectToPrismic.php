@@ -11,6 +11,8 @@ class ConnectToPrismic
     /**
      * Connect to the prismic.io API.
      *
+     * Used in App\Http\ViewComposers\PrismicComposer
+     *
      * @param  Request  $request
      * @param  Closure  $next
      * @return mixed
@@ -22,9 +24,6 @@ class ConnectToPrismic
 
         // Define the link resolver
         $request->attributes->set('linkResolver', new LinkResolver());
-
-        // Define the current language
-        $request->attributes->set('currentLang', config('i18n')['default']);
 
         // Connect to the prismic.io repository
         if (config('prismic.url') !== 'https://your-repo-name.prismic.io/api/v2') {
