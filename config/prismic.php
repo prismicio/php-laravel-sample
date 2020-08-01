@@ -12,7 +12,7 @@ return [
     |
     */
 
-    'url' => 'https://laravel-sample.prismic.io/api/v2',
+    'url' => env('PRISMIC_URL', 'https://laravel-sample.prismic.io/api/v2'),
 
     /*
     |--------------------------------------------------------------------------
@@ -25,6 +25,6 @@ return [
     |
     */
 
-    'token' => null,
+    'token' => env('PRISMIC_TOKEN', null),
 
 ];
