@@ -567,3 +567,4 @@ __pycache__/
 
 
 # End of https://www.gitignore.io/api/vim,node,linux,macos,windows,laravel,intellij,sublimetext,visualstudio,visualstudiocode,composer
+/custom_types_old
